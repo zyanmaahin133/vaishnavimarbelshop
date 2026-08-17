@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+Allow: /products
+Allow: /price-list
+Allow: /category/
+Allow: /product/
+
+Disallow: /api/
+Disallow: /_build/
+Disallow: /wishlist
+Disallow: /admin
+Disallow: /*?*ids=
+Disallow: /*?*add-to-cart=
+
+User-agent: Googlebot
+Allow: /
+Disallow: /wishlist
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Disallow: /wishlist
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+Sitemap: https://marble-wonder-finder.lovable.app/sitemap.xml
