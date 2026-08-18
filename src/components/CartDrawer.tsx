@@ -5,20 +5,8 @@ import { formatPrice } from "@/data/catalog";
 import { trackBeginCheckout } from "@/lib/analytics";
 
 export function CartDrawer() {
-  const {
-    lines,
-    open,
-    setOpen,
-    setQty,
-    remove,
-    clear,
-    total,
-    orderMessage,
-    note,
-    setNote,
-    delivery,
-    setDelivery,
-  } = useCart();
+  const { lines, open, setOpen, setQty, remove, clear, total, orderMessage, note, setNote, delivery, setDelivery } =
+    useCart();
 
   if (!open) return null;
 
@@ -141,6 +129,7 @@ export function CartDrawer() {
                 </pre>
               </div>
             </div>
+
 
             <footer className="border-t border-border p-5">
               <div className="flex items-center justify-between">

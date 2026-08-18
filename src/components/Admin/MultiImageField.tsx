@@ -80,66 +80,36 @@ export function MultiImageField({ images = [], imageHashes = [], ownerId, onChan
 
   return (
     <div>
-      <label className="block text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground">
-        Images
-      </label>
+      <label className="block text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground">Images</label>
       <div className="mt-2 flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <label className="inline-flex items-center gap-2 cursor-pointer rounded-sm border border-border px-3 py-2 text-xs hover:border-gold">
             <Save className="h-4 w-4" />
             {busy ? "Uploading…" : "Upload images"}
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              className="sr-only"
-              onChange={(e) => void handleFiles(e.target.files)}
-            />
+            <input type="file" accept="image/*" multiple className="sr-only" onChange={(e) => void handleFiles(e.target.files)} />
           </label>
-          <p className="text-xs text-muted-foreground">
-            Upload multiple images. First image will be primary.
-          </p>
+          <p className="text-xs text-muted-foreground">Upload multiple images. First image will be primary.</p>
         </div>
 
         {error && <p className="text-xs text-destructive">{error}</p>}
 
         <div className="grid grid-cols-3 gap-3">
           {images?.map((img, i) => (
-            <div
-              key={i}
-              className="relative rounded-sm border border-border overflow-hidden bg-secondary"
-            >
+            <div key={i} className="relative rounded-sm border border-border overflow-hidden bg-secondary">
               <img src={img} alt={`Image ${i + 1}`} className="h-28 w-full object-cover" />
               <div className="absolute left-1 top-1 flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => move(i, -1)}
-                  className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white"
-                >
+                <button type="button" onClick={() => move(i, -1)} className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white">
                   <ChevronLeft className="h-3 w-3" />
                 </button>
-                <button
-                  type="button"
-                  onClick={() => move(i, 1)}
-                  className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white"
-                >
+                <button type="button" onClick={() => move(i, 1)} className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white">
                   <ChevronRight className="h-3 w-3" />
                 </button>
               </div>
               <div className="absolute right-1 top-1 flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => refreshPreviewFromHash(i)}
-                  title="Refresh preview"
-                  className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white"
-                >
+                <button type="button" onClick={() => refreshPreviewFromHash(i)} title="Refresh preview" className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-black/20 text-white">
                   <ArrowLeftRight className="h-3 w-3" />
                 </button>
-                <button
-                  type="button"
-                  onClick={() => removeAt(i)}
-                  className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-destructive text-white"
-                >
+                <button type="button" onClick={() => removeAt(i)} className="inline-flex items-center justify-center h-6 w-6 rounded-sm bg-destructive text-white">
                   <Trash2 className="h-3 w-3" />
                 </button>
               </div>

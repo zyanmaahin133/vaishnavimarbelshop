@@ -27,7 +27,13 @@ export function validateCatalogSearch(search: Record<string, unknown>): CatalogS
   };
 }
 
-export const SORT_IDS: SortId[] = ["featured", "price-asc", "price-desc", "name-asc", "name-desc"];
+export const SORT_IDS: SortId[] = [
+  "featured",
+  "price-asc",
+  "price-desc",
+  "name-asc",
+  "name-desc",
+];
 
 export const isSortId = (v: string | undefined): v is SortId =>
   !!v && (SORT_IDS as string[]).includes(v);

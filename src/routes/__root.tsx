@@ -70,16 +70,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Aarav Marble House" },
       { property: "og:description", content: "Marble house, god statues and stone work." },
       { name: "twitter:description", content: "Marble house, god statues and stone work." },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7d226423-522f-421e-b84b-88f9abe4aa86/id-preview-b187281d--9a31c819-eca4-4f1b-b11d-9e7217085fa3.lovable.a[...]",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7d226423-522f-421e-b84b-88f9abe4aa86/id-preview-b187281d--9a31c819-eca4-4f1b-b11d-9e7217085fa3.lovable.[...]",
-      },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7d226423-522f-421e-b84b-88f9abe4aa86/id-preview-b187281d--9a31c819-eca4-4f1b-b11d-9e7217085fa3.lovable.a[...]" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7d226423-522f-421e-b84b-88f9abe4aa86/id-preview-b187281d--9a31c819-eca4-4f1b-b11d-9e7217085fa3.lovable.[...]" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

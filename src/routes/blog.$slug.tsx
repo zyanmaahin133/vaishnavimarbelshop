@@ -86,11 +86,7 @@ function BlogPostPage() {
     <PageShell>
       <article className="mx-auto max-w-3xl px-5 pb-20 pt-10 sm:px-8">
         <Breadcrumbs
-          items={[
-            { label: "Home", to: "/" },
-            { label: "Blog", to: "/blog" },
-            { label: post.title },
-          ]}
+          items={[{ label: "Home", to: "/" }, { label: "Blog", to: "/blog" }, { label: post.title }]}
         />
 
         <header className="mt-8">

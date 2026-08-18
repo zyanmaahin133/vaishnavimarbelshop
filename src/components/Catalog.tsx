@@ -36,8 +36,8 @@ export function Catalog({ initialGroup = "types", lockGroup = false, showIntro =
   const group: GroupId = lockGroup
     ? initialGroup
     : isGroupId(search.group, allGroupIds)
-      ? (search.group as GroupId)
-      : initialGroup;
+    ? (search.group as GroupId)
+    : initialGroup;
   const sort: SortId = isSortId(search.sort) ? search.sort : "featured";
   const query = search.q ?? "";
   const page = Math.max(1, Number(search.page) || 1);

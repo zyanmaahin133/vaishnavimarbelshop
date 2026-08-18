@@ -1,5 +1,10 @@
 import { MessageCircle, Navigation, Phone } from "lucide-react";
-import { BUSINESS, SHOWROOM_IMAGE, mapsDirectionsLink, whatsappLink } from "@/lib/business";
+import {
+  BUSINESS,
+  SHOWROOM_IMAGE,
+  mapsDirectionsLink,
+  whatsappLink,
+} from "@/lib/business";
 import { trackWhatsAppSubmit } from "@/lib/analytics";
 
 /** Highlighted, colour-framed photo of the real showroom front. */
@@ -36,8 +41,8 @@ export function ShowroomHighlight() {
             Two floors of marble, statues &amp; finished stone
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-primary-foreground/80">
-            Walk the yard, see the veins in daylight and check the carving finish yourself before
-            you book. Loading, transport and fitting teams work out of the same address.
+            Walk the yard, see the veins in daylight and check the carving finish yourself before you
+            book. Loading, transport and fitting teams work out of the same address.
           </p>
           <p className="mt-6 text-sm font-medium text-primary-foreground/90">{BUSINESS.address}</p>
           <p className="mt-1 text-sm text-primary-foreground/70">{BUSINESS.hours}</p>

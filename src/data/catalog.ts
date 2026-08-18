@@ -186,6 +186,7 @@ const build = (seeds: Seed[], group: GroupId, unit: string): CatalogItem[] =>
     };
   });
 
+
 export const CATALOG: CatalogItem[] = [
   ...build(typeSeeds, "types", "per sq ft"),
   ...build(statueSeeds, "statues", "onwards"),
@@ -231,4 +232,5 @@ export const formatPrice = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 export const getCatalogItem = (id: string) => CATALOG.find((i) => i.id === id);
 
-export const groupLabel = (id: GroupId) => GROUPS.find((g) => g.id === id)?.label ?? "Marble";
+export const groupLabel = (id: GroupId) =>
+  GROUPS.find((g) => g.id === id)?.label ?? "Marble";

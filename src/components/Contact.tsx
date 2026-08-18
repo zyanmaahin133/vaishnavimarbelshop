@@ -3,7 +3,12 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { BUSINESS, whatsappLink } from "@/lib/business";
 import { trackWhatsAppSubmit } from "@/lib/analytics";
 
-const INTERESTS = ["Marble Types", "God Statues", "House Products", "Brand / Company stock"];
+const INTERESTS = [
+  "Marble Types",
+  "God Statues",
+  "House Products",
+  "Brand / Company stock",
+];
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -64,6 +69,7 @@ Please send me a quotation.`;
             trackWhatsAppSubmit({ source: "contact_form", item_name: interest });
             window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
           }}
+
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Your name">

@@ -27,11 +27,7 @@ export const TAXONOMY: Category[] = [
     id: "sanitaryware",
     label: "Sanitaryware",
     subcategories: [
-      {
-        id: "bathroom-sanitaryware",
-        label: "Bathroom Sanitaryware",
-        keywords: ["sanitary", "wc", "wash basin"],
-      },
+      { id: "bathroom-sanitaryware", label: "Bathroom Sanitaryware", keywords: ["sanitary", "wc", "wash basin"] },
       { id: "sink", label: "Sink", keywords: ["sink"] },
       { id: "vanity", label: "Vanity", keywords: ["vanity"] },
       { id: "parking-tiles", label: "Parking tiles", keywords: ["parking"] },

@@ -77,15 +77,14 @@ function AboutPage() {
             <h2 className="font-display text-3xl text-foreground">How we work</h2>
             <p>
               Every enquiry starts with the room, the area and the budget. We shortlist two or three
-              stones, send photographs of the actual lots in stock, and only then quote. For
-              flooring and counters we take site measurements and prepare cutting drawings so
-              wastage stays under control.
+              stones, send photographs of the actual lots in stock, and only then quote. For flooring
+              and counters we take site measurements and prepare cutting drawings so wastage stays
+              under control.
             </p>
             <p>
               Murtis follow a different path: proportions to Shilpa Shastra, a mock-up for your
-              approval, then carving, finishing and — where you want it — gold leaf or hand
-              painting. Nothing is dispatched before you have seen photographs of the finished
-              piece.
+              approval, then carving, finishing and — where you want it — gold leaf or hand painting.
+              Nothing is dispatched before you have seen photographs of the finished piece.
             </p>
             <p>
               Delivery is crated and foam-braced. Our fitting teams travel where needed, and we stay

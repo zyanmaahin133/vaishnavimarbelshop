@@ -61,9 +61,7 @@ function VideosPage() {
               className="overflow-hidden rounded-sm border border-border bg-card shadow-soft"
             >
               <a
-                href={whatsappLink(
-                  `Namaste ${BUSINESS.name}! Please send me the video: ${v.title}`,
-                )}
+                href={whatsappLink(`Namaste ${BUSINESS.name}! Please send me the video: ${v.title}`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block"

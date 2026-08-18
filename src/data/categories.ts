@@ -196,12 +196,21 @@ export const mainCategories: Category[] = [
       {
         id: "granite",
         name: "Granite",
-        seoTopics: ["Kitchen Countertop Granite", "Staircase Granite", "Wall Granite"],
+        seoTopics: [
+          "Kitchen Countertop Granite",
+          "Staircase Granite",
+          "Wall Granite",
+        ],
       },
       {
         id: "marble-statues",
         name: "Marble Statues",
-        seoTopics: ["Hindu God Statues", "Lord Ganesha", "Lord Shiva", "Krishna Statues"],
+        seoTopics: [
+          "Hindu God Statues",
+          "Lord Ganesha",
+          "Lord Shiva",
+          "Krishna Statues",
+        ],
       },
     ],
   },

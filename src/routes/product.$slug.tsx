@@ -19,10 +19,7 @@ export const Route = createFileRoute("/product/$slug")({
   head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [
-          { title: "Item not found — Aarav Marble House" },
-          { name: "robots", content: "noindex" },
-        ],
+        meta: [{ title: "Item not found — Aarav Marble House" }, { name: "robots", content: "noindex" }],
       };
     }
     const { item } = loaderData;
@@ -177,9 +174,7 @@ function ProductPage() {
 
         {related.length ? (
           <section className="mt-20">
-            <h2 className="font-display text-2xl text-foreground">
-              More in {groupLabel(item.group)}
-            </h2>
+            <h2 className="font-display text-2xl text-foreground">More in {groupLabel(item.group)}</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((r) => (
                 <Link

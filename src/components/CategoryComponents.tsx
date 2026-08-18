@@ -31,7 +31,11 @@ export function CategoryNav() {
   );
 }
 
-export function CategoryCard({ category }: { category: (typeof mainCategories)[0] }) {
+export function CategoryCard({
+  category,
+}: {
+  category: (typeof mainCategories)[0];
+}) {
   return (
     <Link
       to="/categories/$categoryId"
@@ -47,9 +51,13 @@ export function CategoryCard({ category }: { category: (typeof mainCategories)[0
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-foreground">{category.name}</h3>
+        <h3 className="text-xl font-bold text-foreground">
+          {category.name}
+        </h3>
         {category.description && (
-          <p className="mt-2 text-sm text-muted-foreground">{category.description}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {category.description}
+          </p>
         )}
         <span className="mt-4 inline-block text-xs uppercase tracking-widest text-gold font-semibold">
           Explore →
