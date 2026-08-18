@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { mainCategories } from "@/data/categories";
 import { PageShell } from "@/components/Chrome";
 
-export const Route = createFileRoute("/categories")({
+export const Route = createFileRoute("/categories/")({
   head: () => ({
     meta: [
       { title: "Categories — Vaishnavi Marble Shop" },

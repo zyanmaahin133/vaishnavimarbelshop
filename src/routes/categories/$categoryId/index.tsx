@@ -3,7 +3,7 @@ import { mainCategories } from "@/data/categories";
 import { PageShell } from "@/components/Chrome";
 import { ProductCard } from "@/components/ProductCard";
 
-export const Route = createFileRoute("/categories/$categoryId")({
+export const Route = createFileRoute("/categories/$categoryId/")({
   head: ({ params }) => {
     const category = mainCategories.find((c) => c.id === params.categoryId);
     return {

@@ -6,6 +6,7 @@ import { useCart } from "@/lib/cart";
 import { useWishlist } from "@/lib/wishlist";
 import { CartDrawer } from "@/components/CartDrawer";
 import { CATEGORIES } from "@/data/content";
+import { mainCategories } from "@/data/categories";
 import { SOCIALS } from "@/lib/socials";
 import { Facebook, Instagram, ShoppingCart } from "lucide-react";
 
@@ -37,21 +38,6 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="hidden bg-primary text-primary-foreground md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 text-xs sm:px-8">
-          <p className="text-primary-foreground/70">{BUSINESS.address}</p>
-          <div className="flex items-center gap-6">
-            <a
-              href={`tel:${BUSINESS.phone}`}
-              className="inline-flex items-center gap-1.5 hover:text-gold"
-            >
-              <Phone className="h-3.5 w-3.5" aria-hidden="true" /> {BUSINESS.phoneDisplay}
-            </a>
-            <span className="text-primary-foreground/70">{BUSINESS.hours}</span>
-          </div>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 shadow-soft backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
           <Link to="/" className="flex shrink-0 items-center gap-3">
@@ -67,6 +53,47 @@ export function SiteHeader() {
           </Link>
 
           <nav aria-label="Main" className="hidden items-center gap-5 lg:flex xl:gap-7">
+            <div key="categories" className="group relative">
+              <Link
+                to="/categories"
+                activeProps={{ className: linkActive }}
+                className={`${linkBase} inline-flex items-center gap-1`}
+              >
+                Categories
+                <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />
+              </Link>
+              <div className="invisible absolute left-0 top-full z-50 w-64 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100">
+                <ul className="overflow-hidden rounded-sm border border-border bg-card py-1 shadow-lift">
+                  <li>
+                    <Link
+                      to="/categories"
+                      className="block px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-gold-soft"
+                    >
+                      All Categories
+                    </Link>
+                  </li>
+                  {mainCategories.map((c) => (
+                    <li key={c.id}>
+                      <Link
+                        to="/categories/$categoryId"
+                        params={{ categoryId: c.id }}
+                        className="block px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-gold-soft hover:text-foreground"
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                  <li className="border-t border-border">
+                    <Link
+                      to="/admin"
+                      className="block px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-gold-soft hover:text-foreground"
+                    >
+                      Admin Login
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
             {NAV.map((n) =>
               n.to === "/products" ? (
                 <div key={n.to} className="group relative">
@@ -165,6 +192,29 @@ export function SiteHeader() {
         {menu && (
           <nav aria-label="Mobile" className="border-t border-border bg-card lg:hidden">
             <ul className="mx-auto max-h-[70vh] max-w-7xl overflow-y-auto px-5 py-2 sm:px-8">
+              <li>
+                <Link
+                  to="/categories"
+                  onClick={() => setMenu(false)}
+                  className="block border-b border-border/60 py-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground"
+                >
+                  Categories
+                </Link>
+                <ul className="border-b border-border/60">
+                  {mainCategories.map((c) => (
+                    <li key={c.id}>
+                      <Link
+                        to="/categories/$categoryId"
+                        params={{ categoryId: c.id }}
+                        onClick={() => setMenu(false)}
+                        className="block py-2.5 pl-4 text-sm text-muted-foreground"
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
               {NAV.map((n) => (
                 <li key={n.to}>
                   <Link

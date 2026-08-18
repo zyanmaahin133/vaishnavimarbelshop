@@ -2,7 +2,7 @@ import { createFileRoute, useParams, Link } from "@tanstack/react-router";
 import { mainCategories } from "@/data/categories";
 import { PageShell } from "@/components/Chrome";
 
-export const Route = createFileRoute("/categories/$categoryId/$subcategoryId")({
+export const Route = createFileRoute("/categories/$categoryId/$subcategoryId/")({
   head: ({ params }) => {
     const category = mainCategories.find((c) => c.id === params.categoryId);
     const subcategory = category?.subcategories?.find(

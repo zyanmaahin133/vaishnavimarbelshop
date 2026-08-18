@@ -21,8 +21,11 @@ import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as ApiCategoryImagesRouteImport } from './routes/api/category-images'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CategoriesIndexRouteImport } from './routes/categories/index'
 import { Route as CategorySlugRouteImport } from './routes/category.$slug'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as CategoriesCategoryIdIndexRouteImport } from './routes/categories/$categoryId/index'
+import { Route as CategoriesCategoryIdSubcategoryIdIndexRouteImport } from './routes/categories/$categoryId/$subcategoryId/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -84,6 +87,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriesIndexRoute = CategoriesIndexRouteImport.update({
+  id: '/categories/',
+  path: '/categories/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
   path: '/category/$slug',
@@ -94,6 +102,18 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriesCategoryIdIndexRoute =
+  CategoriesCategoryIdIndexRouteImport.update({
+    id: '/categories/$categoryId/',
+    path: '/categories/$categoryId/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CategoriesCategoryIdSubcategoryIdIndexRoute =
+  CategoriesCategoryIdSubcategoryIdIndexRouteImport.update({
+    id: '/categories/$categoryId/$subcategoryId/',
+    path: '/categories/$categoryId/$subcategoryId/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -110,6 +130,9 @@ export interface FileRoutesByFullPath {
   '/category/$slug': typeof CategorySlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/categories/': typeof CategoriesIndexRoute
+  '/categories/$categoryId/': typeof CategoriesCategoryIdIndexRoute
+  '/categories/$categoryId/$subcategoryId/': typeof CategoriesCategoryIdSubcategoryIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +149,9 @@ export interface FileRoutesByTo {
   '/category/$slug': typeof CategorySlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/categories': typeof CategoriesIndexRoute
+  '/categories/$categoryId': typeof CategoriesCategoryIdIndexRoute
+  '/categories/$categoryId/$subcategoryId': typeof CategoriesCategoryIdSubcategoryIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +169,9 @@ export interface FileRoutesById {
   '/category/$slug': typeof CategorySlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/categories/': typeof CategoriesIndexRoute
+  '/categories/$categoryId/': typeof CategoriesCategoryIdIndexRoute
+  '/categories/$categoryId/$subcategoryId/': typeof CategoriesCategoryIdSubcategoryIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +190,9 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/product/$slug'
     | '/blog/'
+    | '/categories/'
+    | '/categories/$categoryId/'
+    | '/categories/$categoryId/$subcategoryId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +209,9 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/product/$slug'
     | '/blog'
+    | '/categories'
+    | '/categories/$categoryId'
+    | '/categories/$categoryId/$subcategoryId'
   id:
     | '__root__'
     | '/'
@@ -193,6 +228,9 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/product/$slug'
     | '/blog/'
+    | '/categories/'
+    | '/categories/$categoryId/'
+    | '/categories/$categoryId/$subcategoryId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -210,6 +248,9 @@ export interface RootRouteChildren {
   CategorySlugRoute: typeof CategorySlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  CategoriesIndexRoute: typeof CategoriesIndexRoute
+  CategoriesCategoryIdIndexRoute: typeof CategoriesCategoryIdIndexRoute
+  CategoriesCategoryIdSubcategoryIdIndexRoute: typeof CategoriesCategoryIdSubcategoryIdIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -298,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categories/': {
+      id: '/categories/'
+      path: '/categories'
+      fullPath: '/categories/'
+      preLoaderRoute: typeof CategoriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/category/$slug': {
       id: '/category/$slug'
       path: '/category/$slug'
@@ -310,6 +358,20 @@ declare module '@tanstack/react-router' {
       path: '/product/$slug'
       fullPath: '/product/$slug'
       preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories/$categoryId/': {
+      id: '/categories/$categoryId/'
+      path: '/categories/$categoryId'
+      fullPath: '/categories/$categoryId/'
+      preLoaderRoute: typeof CategoriesCategoryIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories/$categoryId/$subcategoryId/': {
+      id: '/categories/$categoryId/$subcategoryId/'
+      path: '/categories/$categoryId/$subcategoryId'
+      fullPath: '/categories/$categoryId/$subcategoryId/'
+      preLoaderRoute: typeof CategoriesCategoryIdSubcategoryIdIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -330,6 +392,10 @@ const rootRouteChildren: RootRouteChildren = {
   CategorySlugRoute: CategorySlugRoute,
   ProductSlugRoute: ProductSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  CategoriesIndexRoute: CategoriesIndexRoute,
+  CategoriesCategoryIdIndexRoute: CategoriesCategoryIdIndexRoute,
+  CategoriesCategoryIdSubcategoryIdIndexRoute:
+    CategoriesCategoryIdSubcategoryIdIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
