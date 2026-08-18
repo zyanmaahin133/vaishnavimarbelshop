@@ -67,10 +67,26 @@ const BESTSELLERS = [
   .filter(Boolean) as typeof CATALOG;
 
 const USPS = [
-  { icon: Hammer, title: "Own carving workshop", text: "Murtis and carved work made in-house by Jaipur karigars." },
-  { icon: Ruler, title: "Cut to your drawing", text: "Site measurement, cutting drawings and fitting by our own team." },
-  { icon: ShieldCheck, title: "Transparent rates", text: "Published starting prices for every item, no hidden loading." },
-  { icon: Truck, title: "Delivered all India", text: "Crated, foam-braced and insured transport from Newtown, Kolkata." },
+  {
+    icon: Hammer,
+    title: "Own carving workshop",
+    text: "Murtis and carved work made in-house by Jaipur karigars.",
+  },
+  {
+    icon: Ruler,
+    title: "Cut to your drawing",
+    text: "Site measurement, cutting drawings and fitting by our own team.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Transparent rates",
+    text: "Published starting prices for every item, no hidden loading.",
+  },
+  {
+    icon: Truck,
+    title: "Delivered all India",
+    text: "Crated, foam-braced and insured transport from Newtown, Kolkata.",
+  },
 ];
 
 function Index() {
@@ -112,27 +128,27 @@ function Index() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map((c, ci) => (
             <Reveal key={c.slug} delay={ci * 90}>
-            <Link
-              to="/category/$slug"
-              params={{ slug: c.slug }}
-              className="tilt-card group block h-full overflow-hidden rounded-sm border border-border bg-card shadow-soft"
-            >
-              <img
-                src={c.image}
-                alt={`${c.label} at ${BUSINESS.name} — ${c.intro}`}
-                loading="lazy"
-                width={1600}
-                height={900}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="p-5">
-                <h3 className="font-display text-2xl text-foreground">{c.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.intro}</p>
-                <span className="mt-4 inline-block text-xs uppercase tracking-widest text-gold">
-                  Explore →
-                </span>
-              </div>
-            </Link>
+              <Link
+                to="/category/$slug"
+                params={{ slug: c.slug }}
+                className="tilt-card group block h-full overflow-hidden rounded-sm border border-border bg-card shadow-soft"
+              >
+                <img
+                  src={c.image}
+                  alt={`${c.label} at ${BUSINESS.name} — ${c.intro}`}
+                  loading="lazy"
+                  width={1600}
+                  height={900}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="p-5">
+                  <h3 className="font-display text-2xl text-foreground">{c.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.intro}</p>
+                  <span className="mt-4 inline-block text-xs uppercase tracking-widest text-gold">
+                    Explore →
+                  </span>
+                </div>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -181,29 +197,29 @@ function Index() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {POSTS.map((p, pi) => (
               <Reveal key={p.slug} delay={pi * 90}>
-              <Link
-                to="/blog/$slug"
-                params={{ slug: p.slug }}
-                className="tilt-card group block h-full overflow-hidden rounded-sm border border-border bg-card shadow-soft"
-              >
-                <img
-                  src={p.image}
-                  alt={`Article cover — ${p.title}`}
-                  loading="lazy"
-                  width={1600}
-                  height={900}
-                  className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="p-5">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {p.readTime}
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl leading-tight text-foreground">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
-                </div>
-              </Link>
+                <Link
+                  to="/blog/$slug"
+                  params={{ slug: p.slug }}
+                  className="tilt-card group block h-full overflow-hidden rounded-sm border border-border bg-card shadow-soft"
+                >
+                  <img
+                    src={p.image}
+                    alt={`Article cover — ${p.title}`}
+                    loading="lazy"
+                    width={1600}
+                    height={900}
+                    className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="p-5">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                      {p.readTime}
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl leading-tight text-foreground">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>

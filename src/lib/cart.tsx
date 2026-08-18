@@ -3,7 +3,6 @@ import { BUSINESS, whatsappLink } from "@/lib/business";
 import { formatPrice } from "@/data/catalog";
 import { trackAddToCart, track } from "@/lib/analytics";
 
-
 export type CartLine = {
   id: string;
   name: string;
@@ -76,7 +75,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const setQty: CartApi["setQty"] = useCallback((id, qty) => {
     setLines((prev) =>
-      qty <= 0 ? prev.filter((l) => l.id !== id) : prev.map((l) => (l.id === id ? { ...l, qty } : l)),
+      qty <= 0
+        ? prev.filter((l) => l.id !== id)
+        : prev.map((l) => (l.id === id ? { ...l, qty } : l)),
     );
   }, []);
 
@@ -84,7 +85,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     track("remove_from_cart", { item_id: id });
     setLines((prev) => prev.filter((l) => l.id !== id));
   }, []);
-
 
   const clear = useCallback(() => setLines([]), []);
 

@@ -173,7 +173,6 @@ Please share available lots with photos and rate per sq ft.`,
 
 export const templateLink = (t: MessageTemplate) => whatsappLink(t.message);
 
-
 /**
  * Picks the WhatsApp preset that matches an item, so a one-click enquiry from
  * any product auto-fills the right questionnaire (flooring vs slabs vs statues

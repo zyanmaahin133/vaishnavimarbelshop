@@ -38,7 +38,11 @@ export type AdminState = {
 const KEY = "amh-admin-studio-v1";
 
 const baseState = (): AdminState => ({
-  products: CATALOG.map((i) => ({ ...i, images: i.image ? [i.image] : [], imageHashes: i.imageHash ? [i.imageHash] : [] })),
+  products: CATALOG.map((i) => ({
+    ...i,
+    images: i.image ? [i.image] : [],
+    imageHashes: i.imageHash ? [i.imageHash] : [],
+  })),
   categories: CATEGORIES.map((c) => ({
     slug: c.slug,
     label: c.label,
@@ -143,14 +147,22 @@ export function AdminStudioProvider({ children }: { children: React.ReactNode })
       saveProduct: (p) => {
         const exists = state.products.some((x) => x.id === p.id);
         withProducts(
-          exists ? state.products.map((x) => (x.id === p.id ? { ...x, ...p } : x)) : [p, ...state.products],
+          exists
+            ? state.products.map((x) => (x.id === p.id ? { ...x, ...p } : x))
+            : [p, ...state.products],
         );
       },
       deleteProduct: (id) => withProducts(state.products.filter((x) => x.id !== id)),
       toggleHidden: (id) =>
         withProducts(state.products.map((x) => (x.id === id ? { ...x, hidden: !x.hidden } : x))),
       moveProduct: (id, dir) =>
-        withProducts(move(state.products, state.products.findIndex((x) => x.id === id), dir)),
+        withProducts(
+          move(
+            state.products,
+            state.products.findIndex((x) => x.id === id),
+            dir,
+          ),
+        ),
       saveCategory: (c) => {
         const exists = state.categories.some((x) => x.slug === c.slug);
         commit({
@@ -163,18 +175,31 @@ export function AdminStudioProvider({ children }: { children: React.ReactNode })
       moveCategory: (slug, dir) =>
         commit({
           ...state,
-          categories: move(state.categories, state.categories.findIndex((x) => x.slug === slug), dir),
+          categories: move(
+            state.categories,
+            state.categories.findIndex((x) => x.slug === slug),
+            dir,
+          ),
         }),
       saveBrand: (b) => {
         const exists = state.brands.some((x) => x.id === b.id);
         commit({
           ...state,
-          brands: exists ? state.brands.map((x) => (x.id === b.id ? { ...x, ...b } : x)) : [...state.brands, b],
+          brands: exists
+            ? state.brands.map((x) => (x.id === b.id ? { ...x, ...b } : x))
+            : [...state.brands, b],
         });
       },
       deleteBrand: (id) => commit({ ...state, brands: state.brands.filter((x) => x.id !== id) }),
       moveBrand: (id, dir) =>
-        commit({ ...state, brands: move(state.brands, state.brands.findIndex((x) => x.id === id), dir) }),
+        commit({
+          ...state,
+          brands: move(
+            state.brands,
+            state.brands.findIndex((x) => x.id === id),
+            dir,
+          ),
+        }),
       findImageOwner: (hash, exceptId) => {
         const p = state.products.find((x) => x.imageHashes?.includes(hash) && x.id !== exceptId);
         if (p) return p.name;

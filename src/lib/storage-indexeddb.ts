@@ -20,7 +20,7 @@ function openDb(): Promise<IDBDatabase> {
   });
 }
 
-export async function idbGet(key: string): Promise<any | null> {
+export async function idbGet(key: string): Promise<unknown> {
   const db = await openDb();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_KV, "readonly");
@@ -31,7 +31,7 @@ export async function idbGet(key: string): Promise<any | null> {
   });
 }
 
-export async function idbSet(key: string, value: any): Promise<void> {
+export async function idbSet(key: string, value: unknown): Promise<void> {
   const db = await openDb();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_KV, "readwrite");

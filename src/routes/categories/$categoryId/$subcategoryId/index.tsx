@@ -5,9 +5,7 @@ import { PageShell } from "@/components/Chrome";
 export const Route = createFileRoute("/categories/$categoryId/$subcategoryId/")({
   head: ({ params }) => {
     const category = mainCategories.find((c) => c.id === params.categoryId);
-    const subcategory = category?.subcategories?.find(
-      (s) => s.id === params.subcategoryId
-    );
+    const subcategory = category?.subcategories?.find((s) => s.id === params.subcategoryId);
     return {
       meta: [
         {
@@ -29,9 +27,7 @@ function SubcategoryPage() {
   });
 
   const category = mainCategories.find((c) => c.id === categoryId);
-  const subcategory = category?.subcategories?.find(
-    (s) => s.id === subcategoryId
-  );
+  const subcategory = category?.subcategories?.find((s) => s.id === subcategoryId);
 
   if (!category || !subcategory) {
     return (
@@ -39,10 +35,7 @@ function SubcategoryPage() {
         <div className="flex min-h-screen items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold">Item not found</h1>
-            <Link
-              to="/categories"
-              className="mt-6 inline-block text-gold hover:underline"
-            >
+            <Link to="/categories" className="mt-6 inline-block text-gold hover:underline">
               ← Back to categories
             </Link>
           </div>
@@ -82,9 +75,7 @@ function SubcategoryPage() {
           </div>
         )}
 
-        <h1 className="text-5xl font-bold text-foreground sm:text-6xl">
-          {subcategory.name}
-        </h1>
+        <h1 className="text-5xl font-bold text-foreground sm:text-6xl">{subcategory.name}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Explore our complete range of {subcategory.name.toLowerCase()}
         </p>
@@ -92,9 +83,7 @@ function SubcategoryPage() {
         {/* SEO Topics Grid */}
         {subcategory.seoTopics && subcategory.seoTopics.length > 0 && (
           <div className="mt-16">
-            <h2 className="mb-8 text-2xl font-bold text-foreground">
-              Available Options
-            </h2>
+            <h2 className="mb-8 text-2xl font-bold text-foreground">Available Options</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {subcategory.seoTopics.map((topic) => (
                 <div
@@ -106,9 +95,7 @@ function SubcategoryPage() {
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold text-foreground">{topic}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Click to view products
-                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">Click to view products</p>
                   </div>
                 </div>
               ))}
@@ -118,9 +105,7 @@ function SubcategoryPage() {
 
         {/* CTA Section */}
         <div className="mt-20 rounded-lg bg-secondary/50 p-12 text-center">
-          <h3 className="text-2xl font-bold text-foreground">
-            Looking for something specific?
-          </h3>
+          <h3 className="text-2xl font-bold text-foreground">Looking for something specific?</h3>
           <p className="mt-2 text-muted-foreground">
             Contact us for custom orders and bulk purchases
           </p>

@@ -23,8 +23,7 @@ type AdminAuthApi = {
 
 const AdminAuthContext = createContext<AdminAuthApi | null>(null);
 
-const ADMIN_PASSWORD =
-  (import.meta.env.VITE_ADMIN_PASSWORD as string | undefined) ?? "admin123";
+const ADMIN_PASSWORD = (import.meta.env.VITE_ADMIN_PASSWORD as string | undefined) ?? "admin123";
 
 export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
   const [authenticated, setAuthenticated] = useState(false);

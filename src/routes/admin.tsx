@@ -175,8 +175,8 @@ function AdminPage({ onLogout }: { onLogout: () => void }) {
           </div>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
             Add, edit and reorder products, categories, brands and images with a live preview before
-            you save. Everything stays in this browser — no server, no database. Export the JSON when
-            you want the changes made permanent.
+            you save. Everything stays in this browser — no server, no database. Export the JSON
+            when you want the changes made permanent.
           </p>
         </header>
 
@@ -260,7 +260,8 @@ function ProductsPanel() {
     return q ? products.filter((p) => p.name.toLowerCase().includes(q)) : products;
   }, [products, query]);
 
-  const valid = draft.name.trim().length > 1 && draft.price > 0 && Boolean(draft.images && draft.images.length);
+  const valid =
+    draft.name.trim().length > 1 && draft.price > 0 && Boolean(draft.images && draft.images.length);
 
   function submit() {
     if (!valid) return;
@@ -347,7 +348,15 @@ function ProductsPanel() {
               images={draft.images || []}
               imageHashes={draft.imageHashes || []}
               ownerId={draft.id}
-              onChange={(imgs, hashes) => setDraft({ ...draft, images: imgs, imageHashes: hashes, image: imgs[0] || "", imageHash: hashes[0] || undefined })}
+              onChange={(imgs, hashes) =>
+                setDraft({
+                  ...draft,
+                  images: imgs,
+                  imageHashes: hashes,
+                  image: imgs[0] || "",
+                  imageHash: hashes[0] || undefined,
+                })
+              }
             />
           </div>
         </div>
@@ -532,16 +541,21 @@ function CategoriesPanel() {
           {/* Keep existing single-image picker for categories for now */}
           <div>
             <label className={label}>Image</label>
-            <input type="file" accept="image/*" className="mt-2 block" onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-              try {
-                const dataUrl = await readAsDataUrl(file);
-                setDraft({ ...draft, image: dataUrl });
-              } catch {
-                // ignore
-              }
-            }} />
+            <input
+              type="file"
+              accept="image/*"
+              className="mt-2 block"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                try {
+                  const dataUrl = await readAsDataUrl(file);
+                  setDraft({ ...draft, image: dataUrl });
+                } catch {
+                  // ignore
+                }
+              }}
+            />
           </div>
           <button
             type="button"
@@ -559,19 +573,39 @@ function CategoriesPanel() {
         <ul className="mt-8 divide-y divide-border rounded-sm border border-border">
           {categories.map((c) => (
             <li key={c.slug} className="flex items-center gap-3 p-3">
-              <img src={c.image} alt="" aria-hidden="true" className="h-11 w-14 rounded-sm object-cover" />
+              <img
+                src={c.image}
+                alt=""
+                aria-hidden="true"
+                className="h-11 w-14 rounded-sm object-cover"
+              />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-semibold text-foreground">{c.label}</p>
                 <p className="truncate text-xs text-muted-foreground">{c.intro}</p>
               </div>
               <div className="flex shrink-0 gap-1.5">
-                <button type="button" aria-label={`Move ${c.label} up`} className={iconBtn} onClick={() => moveCategory(c.slug, -1)}>
+                <button
+                  type="button"
+                  aria-label={`Move ${c.label} up`}
+                  className={iconBtn}
+                  onClick={() => moveCategory(c.slug, -1)}
+                >
                   <ArrowUp className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" aria-label={`Move ${c.label} down`} className={iconBtn} onClick={() => moveCategory(c.slug, 1)}>
+                <button
+                  type="button"
+                  aria-label={`Move ${c.label} down`}
+                  className={iconBtn}
+                  onClick={() => moveCategory(c.slug, 1)}
+                >
                   <ArrowDown className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" aria-label={`Edit ${c.label}`} className={`${iconBtn} w-auto px-2 text-xs`} onClick={() => setDraft({ ...c })}>
+                <button
+                  type="button"
+                  aria-label={`Edit ${c.label}`}
+                  className={`${iconBtn} w-auto px-2 text-xs`}
+                  onClick={() => setDraft({ ...c })}
+                >
                   Edit
                 </button>
               </div>
@@ -584,7 +618,12 @@ function CategoriesPanel() {
         <p className="eyebrow">Live preview</p>
         <div className="mt-5 overflow-hidden rounded-sm border border-border bg-card shadow-soft">
           {draft.image ? (
-            <img src={draft.image} alt="" aria-hidden="true" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={draft.image}
+              alt=""
+              aria-hidden="true"
+              className="aspect-[4/3] w-full object-cover"
+            />
           ) : (
             <div className="aspect-[4/3] w-full bg-secondary" />
           )}
@@ -624,7 +663,12 @@ function BrandsPanel() {
             <label className={label} htmlFor="b-note">
               Note
             </label>
-            <input id="b-note" className={`${field} mt-2`} value={draft.note} onChange={(e) => setDraft({ ...draft, note: e.target.value })} />
+            <input
+              id="b-note"
+              className={`${field} mt-2`}
+              value={draft.note}
+              onChange={(e) => setDraft({ ...draft, note: e.target.value })}
+            />
           </div>
         </div>
         <button
@@ -655,16 +699,36 @@ function BrandsPanel() {
                 <p className="truncate text-xs text-muted-foreground">{b.note}</p>
               </div>
               <div className="flex shrink-0 gap-1.5">
-                <button type="button" aria-label={`Move ${b.name} up`} className={iconBtn} onClick={() => moveBrand(b.id, -1)}>
+                <button
+                  type="button"
+                  aria-label={`Move ${b.name} up`}
+                  className={iconBtn}
+                  onClick={() => moveBrand(b.id, -1)}
+                >
                   <ArrowUp className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" aria-label={`Move ${b.name} down`} className={iconBtn} onClick={() => moveBrand(b.id, 1)}>
+                <button
+                  type="button"
+                  aria-label={`Move ${b.name} down`}
+                  className={iconBtn}
+                  onClick={() => moveBrand(b.id, 1)}
+                >
                   <ArrowDown className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" aria-label={`Edit ${b.name}`} className={`${iconBtn} w-auto px-2 text-xs`} onClick={() => setDraft({ ...b })}>
+                <button
+                  type="button"
+                  aria-label={`Edit ${b.name}`}
+                  className={`${iconBtn} w-auto px-2 text-xs`}
+                  onClick={() => setDraft({ ...b })}
+                >
                   Edit
                 </button>
-                <button type="button" aria-label={`Delete ${b.name}`} className={`${iconBtn} hover:border-destructive hover:text-destructive`} onClick={() => deleteBrand(b.id)}>
+                <button
+                  type="button"
+                  aria-label={`Delete ${b.name}`}
+                  className={`${iconBtn} hover:border-destructive hover:text-destructive`}
+                  onClick={() => deleteBrand(b.id)}
+                >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>
               </div>
@@ -677,7 +741,9 @@ function BrandsPanel() {
         <p className="eyebrow">Live preview</p>
         <div className="mt-5 rounded-sm border border-border bg-card p-5 shadow-soft">
           <h3 className="font-display text-2xl">{draft.name || "Brand name"}</h3>
-          <p className="mt-2 text-sm text-muted-foreground">{draft.note || "Short note about the range you stock."}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {draft.note || "Short note about the range you stock."}
+          </p>
         </div>
       </aside>
     </div>

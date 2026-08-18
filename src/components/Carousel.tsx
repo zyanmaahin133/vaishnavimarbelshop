@@ -209,7 +209,10 @@ export function Carousel({ items, heading }: { items: CatalogItem[]; heading?: s
           ))}
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-px bg-primary-foreground/15" aria-hidden="true">
+        <div
+          className="absolute inset-x-0 bottom-0 h-px bg-primary-foreground/15"
+          aria-hidden="true"
+        >
           <span
             className="block h-px bg-gold transition-[width] duration-100 ease-linear"
             style={{ width: `${Math.round(((index + progress) / count) * 100)}%` }}

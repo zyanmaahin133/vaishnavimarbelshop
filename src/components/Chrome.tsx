@@ -10,7 +10,12 @@ import { mainCategories } from "@/data/categories";
 import { SOCIALS } from "@/lib/socials";
 import { Facebook, Instagram, ShoppingCart } from "lucide-react";
 
-const SOCIAL_ICON = { instagram: Instagram, facebook: Facebook, shopify: ShoppingCart, whatsapp: MessageCircle } as const;
+const SOCIAL_ICON = {
+  instagram: Instagram,
+  facebook: Facebook,
+  shopify: ShoppingCart,
+  whatsapp: MessageCircle,
+} as const;
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -41,7 +46,11 @@ export function SiteHeader() {
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 shadow-soft backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
           <Link to="/" className="flex shrink-0 items-center gap-3">
-            <img src="/logo.svg" alt="VAISHNAVI MARBLE" className="h-10 w-10 rounded-sm object-contain" />
+            <img
+              src="/logo.svg"
+              alt="VAISHNAVI MARBLE"
+              className="h-10 w-10 rounded-sm object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="font-display text-xl tracking-wide text-foreground sm:text-2xl">
                 {BUSINESS.name}
@@ -250,7 +259,6 @@ export function SiteHeader() {
   );
 }
 
-
 export function SiteFooter() {
   return (
     <footer className="mt-auto bg-primary text-primary-foreground">
@@ -260,8 +268,8 @@ export function SiteFooter() {
             {BUSINESS.name} <span className="text-gradient-gold">{BUSINESS.tagline}</span>
           </p>
           <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
-            Marble house and murti karigars in Newtown, Kolkata since 1994 — slabs, statues, flooring and
-            carved stone work delivered across India.
+            Marble house and murti karigars in Newtown, Kolkata since 1994 — slabs, statues,
+            flooring and carved stone work delivered across India.
           </p>
           <ul className="mt-5 flex items-center gap-3">
             {SOCIALS.map((s) => {

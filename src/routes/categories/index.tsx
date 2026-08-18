@@ -6,7 +6,10 @@ export const Route = createFileRoute("/categories/")({
   head: () => ({
     meta: [
       { title: "Categories — Vaishnavi Marble Shop" },
-      { name: "description", content: "Browse all our marble, tiles, sanitaryware and home products" },
+      {
+        name: "description",
+        content: "Browse all our marble, tiles, sanitaryware and home products",
+      },
     ],
   }),
   component: CategoriesIndex,
@@ -17,9 +20,7 @@ function CategoriesIndex() {
     <PageShell>
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="mb-16 text-center">
-          <h1 className="text-5xl font-bold text-foreground sm:text-6xl">
-            Shop by Category
-          </h1>
+          <h1 className="text-5xl font-bold text-foreground sm:text-6xl">Shop by Category</h1>
           <p className="mt-4 text-lg text-muted-foreground">
             Explore our complete range of marble, tiles, and home products
           </p>
@@ -42,13 +43,9 @@ function CategoriesIndex() {
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-2xl font-bold text-foreground">
-                  {category.name}
-                </h2>
+                <h2 className="text-2xl font-bold text-foreground">{category.name}</h2>
                 {category.description && (
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {category.description}
-                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">{category.description}</p>
                 )}
                 {category.subcategories && (
                   <p className="mt-4 text-xs text-gold font-semibold">
